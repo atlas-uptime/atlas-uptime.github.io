@@ -1,0 +1,45 @@
+<title>Atlas Uptime</title>
+
+<style type="text/css">
+	#clock {
+		font-family: monospace;
+		font-size: 25px;
+		text-align: center;
+		margin-top: 40vh;
+	}
+
+</style>
+
+<body onload="timeCount();">
+
+	<div id="clock"></div>
+
+	<script type="text/javascript">
+
+		function timeCount() {
+			var today = new Date();
+			var then = new Date("2022-06-24T08:24:00.000+10:00");
+
+			var ms_diff = today - then;
+			// 31536000000 milliseconds in a year
+			// 2628000000 ms in a month
+			// 86400000 ms in a day
+			// 3600000 ms in an hour
+			// 60000 ms in a minute
+			// 1000 ms in a second
+			var years = Math.floor(ms_diff / 31536000000);
+			var months = Math.floor((ms_diff % 31536000000) / 2628000000);
+			var days =  Math.floor((ms_diff % 2628000000) / 86400000);
+			var hours = Math.floor((ms_diff % 86400000) / 3600000);
+			var minutes = Math.floor((ms_diff % 3600000) / 60000);
+			var seconds =  Math.floor((ms_diff % 60000) / 1000);
+
+			document.getElementById("clock").innerHTML = `Uptime: ${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`
+
+			setTimeout("timeCount()", 1000);
+		}
+	
+
+	</script>
+
+</body>
